@@ -1,49 +1,42 @@
-import { Octokit } from "octokit";
+import { FunctionComponent } from "react";
 
-import { CommitItem } from "@/components/CommitItem/CommitItem";
+import { Commit } from "@/components/Commit/Commit";
+import { getCommits } from "src/utils/api/getCommits";
 
 import type { GetStaticProps } from "next";
+import type { CommitProps } from "@/components/Commit/types";
 
+interface PageProps {
+  commits: CommitProps[];
+};
 
-const IndexPage = ({ data }) => {
+const IndexPage: FunctionComponent<PageProps> = ({ commits }) => {
+
+  const showCommits = commits.length > 0;
+  const commitLength = commits.length;
+
   return (
     <div className="flex flex-col">
       <h1 className="mb-6 text-center text-4xl font-medium leading-none text-gray-900 md:text-5xl lg:text-6xl">
-        <span className="text-cyan-400">The are</span> 13 commits
+        <span className="text-cyan-400">The are</span> {commitLength} commits
       </h1>
-      {/* Props move to object */}
-      {data.map((el) => <CommitItem
-        key={el.id}
-        author={el.author}
-        timestamp={el.timestamp}
-        message={el.message}
-      />)}
+      <ul className="flex flex-col gap-3">
+        {showCommits ? 
+          commits.map(({ commit }) => <Commit commit={commit} key={commit.id} />) 
+          : 
+          null
+        }
+      </ul>
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-
-  const octokit = new Octokit({
-    auth: process.env.GITHUB_AUTH_TOKEN,
-  });
-
-  // refactor
-  const response = await octokit.request("GET /repos/{owner}/{repo}/commits", {
-    owner: process.env.GITHUB_USER_NAME,
-    repo: process.env.GITHUB_REPO_NAME,
-  });
-
-  const commits = response.data.map((el) => ({
-    timestamp: el.commit.author.date,
-    author: el.commit.author.name,
-    message: el.commit.message,
-    id: el.sha,
-  }));
+  const commits = await getCommits();
 
   return {
     props: {
-      data: commits,
+      commits,
     },
   };
 };
