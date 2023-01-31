@@ -1,10 +1,15 @@
-import React from 'react'
 import { AppProps } from 'next/app'
 
-import '../styles/index.css'
+import { Container } from "@/components/Container/Container";
+
+import 'styles/index.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <Container>
+      <Component {...pageProps} />
+    </Container>
+  );
 }
 
 export default MyApp;
