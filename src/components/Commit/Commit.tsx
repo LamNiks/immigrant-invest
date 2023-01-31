@@ -12,7 +12,6 @@ export const Commit: FunctionComponent<CommitProps> = ({
     timestamp,
     message,
   } = commit;
-
   return (
     <li className={styles.container}>
       <p className={styles.title}>{message}</p>
