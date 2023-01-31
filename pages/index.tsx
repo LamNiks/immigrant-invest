@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
     auth: process.env.GITHUB_AUTH_TOKEN,
   });
 
-  // refactor
+  // refactor 
   const response = await octokit.request("GET /repos/{owner}/{repo}/commits", {
     owner: process.env.GITHUB_USER_NAME,
     repo: process.env.GITHUB_REPO_NAME,
