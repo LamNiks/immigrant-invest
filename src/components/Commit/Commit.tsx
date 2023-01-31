@@ -1,7 +1,8 @@
 import styles from "src/components/Commit/Commit.module.scss";
+import { Timestamp } from "@/components/Timestamp/Timestamp";
 
 import type { FunctionComponent } from "react";
-import type { CommitProps } from "src/components/Commit/types";
+import type { CommitProps } from "src/types";
 
 export const Commit: FunctionComponent<CommitProps> = ({
   commit,
@@ -17,7 +18,7 @@ export const Commit: FunctionComponent<CommitProps> = ({
       <p className={styles.title}>{message}</p>
       <div className={styles.infoWrapper}>
         <span>{author}</span>
-        <span className={styles.time}>{timestamp}</span>
+        <Timestamp timestamp={timestamp} />
       </div>
     </li>
   );
