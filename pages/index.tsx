@@ -4,7 +4,7 @@ const IndexPage = () => {
 
   return (
     <CommitItem />
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

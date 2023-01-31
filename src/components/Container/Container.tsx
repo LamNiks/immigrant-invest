@@ -1,9 +1,10 @@
-import { FunctionComponent } from "react";
-
 import styles from "src/components/Container/Container.module.scss";
 
+import type { FunctionComponent } from "react";
+
+
 export const Container: FunctionComponent = ({ children }) => (
-  <div className={styles.container}>
+  <main className={styles.container}>
     {children}
-  </div>
-)
+  </main>
+);

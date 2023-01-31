@@ -1,0 +1,28 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "indent": ["warn", 2],
+    "quotes": ["error", "double"],
+    "prefer-const": "error",
+    "no-console": "warn",
+    "no-unused-vars": "error",
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": ["warn", "always"],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "external",
+          "internal",
+          "index",
+          "sibling",
+          "parent",
+          "builtin",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always"
+      }
+    ]
+  }
+}

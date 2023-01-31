@@ -1,6 +1,9 @@
-import { FunctionComponent } from "react";
-
 import styles from "src/components/CommitItem/CommitItem.module.scss";
+
+import type { FunctionComponent } from "react";
+
+
+
 
 export const CommitItem: FunctionComponent = () => {
 
@@ -12,5 +15,5 @@ export const CommitItem: FunctionComponent = () => {
         <span className={styles.time}>Timestamp</span>
       </div>
     </div>
-  )
-}
+  );
+};
