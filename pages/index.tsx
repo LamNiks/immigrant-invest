@@ -17,12 +17,12 @@ const IndexPage: FunctionComponent<PageProps> = ({ commits }) => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="mb-6 text-center text-4xl font-medium leading-none text-gray-900 md:text-5xl lg:text-6xl">
-        <span className="text-cyan-400">The are</span> {commitLength} commits
+      <h1 className="mb-7 text-center text-4xl font-medium leading-none text-gray-900 md:text-5xl lg:text-6xl">
+        <span className="text-cyan-600">The are</span> {commitLength} commits
       </h1>
       <ul className="flex flex-col gap-3">
         {showCommits ? 
-          commits.map(({ commit }) => <Commit commit={commit} key={commit.id} />) 
+          commits.map(({ commit }) => <Commit key={commit.id} commit={commit} />) 
           : 
           null
         }

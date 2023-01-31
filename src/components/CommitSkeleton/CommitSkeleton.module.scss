@@ -1,0 +1,11 @@
+.container {
+  @apply w-full justify-between h-[90px] flex bg-transparent animate-pulse flex-col p-4 rounded-xl gap-2 border border-gray-300;
+}
+
+.wrapper {
+  @apply flex justify-between;
+}
+
+.defaultSkeleton {
+  @apply bg-gray-400 animate-pulse h-4 rounded-xl;
+}
