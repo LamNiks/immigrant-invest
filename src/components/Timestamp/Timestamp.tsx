@@ -1,6 +1,6 @@
 import styles from "@/components/Timestamp/Timestamp.module.scss";
-import { useLiveMinutes } from "src/hooks/useLiveMinutes";
-import { getTime } from "src/components/Timestamp/helpers/getLiveTime";
+import { useGetLiveMinutes } from "src/hooks/useGetLiveMinutes";
+import { getTimeAgoText } from "@/components/Timestamp/helpers/getTimeAgoText";
 
 import type { FunctionComponent } from "react";
 
@@ -9,14 +9,9 @@ interface Props {
 }
 
 export const Timestamp: FunctionComponent<Props> = ({ timestamp }) => {
-  const date = new Date(timestamp).getTime();
-  const today = new Date().getTime();
+  const liveMinutesAgo = useGetLiveMinutes(timestamp);
 
-  const minutes = Math.trunc((today - date) / 60000);
+  const timeAgo = getTimeAgoText(liveMinutesAgo);
 
-  const minutesAgo = useLiveMinutes(minutes);
-
-  const liveTime = getTime(minutesAgo);
-
-  return <span className={styles.time}>{liveTime}</span>;
+  return <time className={styles.time}>{timeAgo}</time>;
 };
