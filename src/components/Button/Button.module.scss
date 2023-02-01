@@ -1,0 +1,7 @@
+.button {
+  @apply my-4 w-fit mx-auto rounded-lg bg-cyan-400 p-3 hover:bg-cyan-300 transition-colors active:bg-cyan-400;
+
+  &:disabled {
+    @apply hover:bg-cyan-400 opacity-60 cursor-not-allowed;
+  }
+}
