@@ -13,5 +13,5 @@ export const Timestamp: FunctionComponent<Props> = ({ timestamp }) => {
 
   const timeAgo = getTimeAgoText(liveMinutesAgo);
 
-  return <time className={styles.time}>{timeAgo}</time>;
+  return <time suppressHydrationWarning className={styles.time}>{timeAgo}</time>;
 };
